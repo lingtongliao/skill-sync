@@ -1,14 +1,16 @@
-# skill-sync
+# skills-sync
 
-`skill-sync` is a Claude Code plugin that provides a reusable skill to:
+`skills-sync` is a cross-assistant skill sync toolkit that helps you:
 - check whether local skills are latest,
 - summarize differences with latest GitHub version,
 - update local skills safely with backup and rollback.
 
+It can be used as a standalone CLI in any workflow, and also includes a Claude plugin wrapper.
+
 ## Repository Structure
 
 ```text
-.claude-plugin/plugin.json
+.claude-plugin/plugin.json  # optional Claude wrapper metadata
 skills/skills-update-manager/
   SKILL.md
   scripts/manage_skills.py
@@ -19,11 +21,18 @@ catalog/skills-manifest.json
 tests/
 ```
 
+## Compatibility
+
+- Claude Code
+- Codex workflows
+- OpenCode workflows
+- Any custom toolchain using file-based skill directories
+
 ## Install for Local Development
 
 1. Clone repository.
-2. Load plugin in Claude Code with plugin directory mode.
-3. Trigger with prompts like:
+2. Run the CLI directly or integrate with your preferred assistant runtime.
+3. Trigger with prompts/invocations like:
    - "检查我的skills是不是最新版本"
    - "对比本地skill和GitHub最新差异"
    - "更新我的skills到最新版本"
@@ -34,7 +43,7 @@ Check all skills:
 
 ```bash
 python "skills/skills-update-manager/scripts/manage_skills.py" check \
-  --repo lingtongliao/skill-sync \
+  --repo lingtongliao/skills-sync \
   --ref main
 ```
 
@@ -42,7 +51,7 @@ Show diff of a specific skill:
 
 ```bash
 python "skills/skills-update-manager/scripts/manage_skills.py" diff \
-  --repo lingtongliao/skill-sync \
+  --repo lingtongliao/skills-sync \
   --ref main \
   --skill skills-update-manager \
   --show-patch
@@ -52,7 +61,7 @@ Apply update:
 
 ```bash
 python "skills/skills-update-manager/scripts/manage_skills.py" update \
-  --repo lingtongliao/skill-sync \
+  --repo lingtongliao/skills-sync \
   --ref main \
   --apply
 ```
@@ -62,7 +71,7 @@ python "skills/skills-update-manager/scripts/manage_skills.py" update \
 Generate manifest:
 
 ```bash
-python scripts/generate_manifest.py --repo lingtongliao/skill-sync --ref main
+python scripts/generate_manifest.py --repo lingtongliao/skills-sync --ref main
 ```
 
 Run tests:

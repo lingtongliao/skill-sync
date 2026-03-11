@@ -28,9 +28,23 @@ def extract_version(skill_md: Path) -> str:
     raise ValueError(f"Missing version field in {skill_md}")
 
 
+def load_project_metadata(repo_root: Path) -> dict:
+    candidates = [
+        repo_root / ".claude-plugin" / "plugin.json",
+        repo_root / "plugin.json",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return json.loads(candidate.read_text(encoding="utf-8"))
+
+    return {
+        "name": repo_root.name,
+        "version": "0.0.0",
+    }
+
+
 def build_manifest(repo_root: Path, repo: str | None, ref: str) -> dict:
-    plugin_json = repo_root / ".claude-plugin" / "plugin.json"
-    plugin_data = json.loads(plugin_json.read_text(encoding="utf-8"))
+    plugin_data = load_project_metadata(repo_root)
 
     skills_dir = repo_root / "skills"
     entries = []

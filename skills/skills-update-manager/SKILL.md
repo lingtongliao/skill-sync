@@ -22,7 +22,7 @@ Use this skill to:
 ## Prerequisites
 
 - Ensure Python 3.10+ is available.
-- Ensure local skills are stored under `~/.claude/skills` (default) or provide `--skills-root`.
+- Ensure local skills are stored under your chosen skills root (default: `~/.skills`) or provide `--skills-root`.
 - Ensure upstream repository publishes `catalog/skills-manifest.json`.
 - Prefer release tags (`--ref vX.Y.Z`) for production-grade updates.
 
@@ -40,8 +40,8 @@ Use this skill to:
 Run check against manifest.
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" check \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" check \
+  --repo lingtongliao/skills-sync \
   --ref main
 ```
 
@@ -55,8 +55,8 @@ Interpret status quickly:
 Use JSON output when downstream automation is needed:
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" check \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" check \
+  --repo lingtongliao/skills-sync \
   --ref main \
   --json
 ```
@@ -66,16 +66,16 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills
 Run diff for all skills or a specific skill.
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" diff \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" diff \
+  --repo lingtongliao/skills-sync \
   --ref main
 ```
 
 Limit scope to one skill:
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" diff \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" diff \
+  --repo lingtongliao/skills-sync \
   --ref main \
   --skill skills-update-manager
 ```
@@ -83,8 +83,8 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills
 Show patch preview for `SKILL.md` to quickly inspect user-visible behavior changes:
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" diff \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" diff \
+  --repo lingtongliao/skills-sync \
   --ref main \
   --skill skills-update-manager \
   --show-patch
@@ -95,8 +95,8 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills
 Preview update actions without touching local files.
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" update \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" update \
+  --repo lingtongliao/skills-sync \
   --ref main
 ```
 
@@ -107,8 +107,8 @@ Dry run is default. It reports what will be updated and why.
 Apply update with backup.
 
 ```bash
-python "${CLAUDE_PLUGIN_ROOT}/skills/skills-update-manager/scripts/manage_skills.py" update \
-  --repo lingtongliao/skill-sync \
+python "skills/skills-update-manager/scripts/manage_skills.py" update \
+  --repo lingtongliao/skills-sync \
   --ref main \
   --apply
 ```
@@ -172,7 +172,7 @@ Only use fast mode for personal experimentation or internal testing.
 Generate manifest before publishing:
 
 ```bash
-python scripts/generate_manifest.py --repo lingtongliao/skill-sync --ref main
+python scripts/generate_manifest.py --repo lingtongliao/skills-sync --ref main
 ```
 
 For complete release steps, follow `references/release-playbook.md`.

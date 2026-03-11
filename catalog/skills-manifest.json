@@ -1,11 +1,11 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-03-11T08:14:49Z",
+  "generated_at": "2026-03-11T08:38:44Z",
   "plugin": {
-    "name": "skill-sync",
+    "name": "skills-sync",
     "version": "0.1.0"
   },
-  "repo": "lingtongliao/skill-sync",
+  "repo": "lingtongliao/skills-sync",
   "ref": "main",
   "skills": [
     {
@@ -17,8 +17,8 @@
       "files": [
         {
           "path": "skills/skills-update-manager/examples/sample-manifest.json",
-          "sha256": "d376a871fdbd48acdb67484bdbb1955455d0d8a72bfd9bd9f497fdc686c43737",
-          "size": 606
+          "sha256": "68ccdc6892c4c7dcf52f04489a97b3c6e4773f09233ed3e0f005fcfd849914ec",
+          "size": 607
         },
         {
           "path": "skills/skills-update-manager/references/manifest-spec.md",
@@ -27,18 +27,18 @@
         },
         {
           "path": "skills/skills-update-manager/references/release-playbook.md",
-          "sha256": "2d1c492cfbcc4ca522a20f03f1818bbde55f0acff465944e039e8516f0910eb0",
-          "size": 885
+          "sha256": "ed0c8166aff844e2374e6524b8a94459c89988622877658f9f692526ccab4ee6",
+          "size": 940
         },
         {
           "path": "skills/skills-update-manager/scripts/manage_skills.py",
-          "sha256": "ea0e65d66e51695f0609d295779203c62b7a2343389df1f1264889de8ea6c66d",
-          "size": 19880
+          "sha256": "9c967d81155afc0a715d5e4f46d3069b168bb4a3a5d9c5677396636a46ad7c08",
+          "size": 20273
         },
         {
           "path": "skills/skills-update-manager/SKILL.md",
-          "sha256": "8b411cf1f95ae45abe173aa174203e031a086a7a708ebaf15dfb8fef93a4bf56",
-          "size": 5382
+          "sha256": "1929d646454428a341d712614c0b7471c586d79831c877d47133d56035992987",
+          "size": 5254
         }
       ]
     }

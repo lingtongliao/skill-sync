@@ -18,10 +18,22 @@ from urllib.request import Request, urlopen
 
 
 DEFAULT_MANIFEST_PATH = "catalog/skills-manifest.json"
-DEFAULT_SKILLS_ROOT = Path.home() / ".claude" / "skills"
-DEFAULT_BACKUP_ROOT = Path.home() / ".claude" / "skills-backup"
+DEFAULT_SKILLS_ROOT_CANDIDATES = [
+    Path.home() / ".skills",
+    Path.home() / ".codex" / "skills",
+    Path.home() / ".opencode" / "skills",
+    Path.home() / ".claude" / "skills",
+]
+DEFAULT_BACKUP_ROOT = Path.home() / ".skills-backup"
 USER_AGENT = "skills-update-manager/0.1.0"
 SEMVER_RE = re.compile(r"^(\d+)\.(\d+)\.(\d+)(?:[-+].*)?$")
+
+
+def default_skills_root() -> Path:
+    for candidate in DEFAULT_SKILLS_ROOT_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    return DEFAULT_SKILLS_ROOT_CANDIDATES[0]
 
 
 @dataclasses.dataclass
@@ -531,8 +543,10 @@ def update_command(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    resolved_default_skills_root = default_skills_root()
+
     parser = argparse.ArgumentParser(
-        description="Check, diff, and update local Claude skills from a manifest.",
+        description="Check, diff, and update local assistant skills from a manifest.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -550,8 +564,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     common.add_argument(
         "--skills-root",
-        default=str(DEFAULT_SKILLS_ROOT),
-        help=f"Local skills root, default: {DEFAULT_SKILLS_ROOT}",
+        default=str(resolved_default_skills_root),
+        help=f"Local skills root, default: {resolved_default_skills_root}",
     )
     common.add_argument(
         "--skill",

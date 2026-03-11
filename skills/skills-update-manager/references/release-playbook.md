@@ -4,7 +4,7 @@ Use this flow to publish predictable updates for public users.
 
 ## 1. Update Version Numbers
 
-- Update `.claude-plugin/plugin.json` version.
+- Update project/plugin metadata version (for example `.claude-plugin/plugin.json` or `plugin.json`).
 - Update each changed skill `SKILL.md` version.
 
 ## 2. Generate Manifest

@@ -1,7 +1,7 @@
 {
-  "name": "skill-sync",
+  "name": "skills-sync",
   "version": "0.1.0",
-  "description": "Check local Claude skills against GitHub manifest, summarize diffs, and update safely.",
+  "description": "Sync local assistant skills against GitHub manifests with diff summaries and safe updates.",
   "author": {
     "name": "leo"
   },
@@ -11,8 +11,10 @@
     "update",
     "diff",
     "github",
-    "claude-code"
+    "assistant-agnostic",
+    "codex",
+    "opencode"
   ],
-  "repository": "https://github.com/lingtongliao/skill-sync",
-  "homepage": "https://github.com/lingtongliao/skill-sync"
+  "repository": "https://github.com/lingtongliao/skills-sync",
+  "homepage": "https://github.com/lingtongliao/skills-sync"
 }
