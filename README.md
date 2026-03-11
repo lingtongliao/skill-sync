@@ -28,19 +28,16 @@ tests/
 - OpenCode workflows
 - Any custom toolchain using file-based skill directories
 
-## One-Click Install (Only `skills-update-manager`)
+## One-Click Install (For CLI Agents)
 
-Install only this skill directory into `~/.skills/skills-update-manager` with a single command:
+Copy and paste this prompt to your LLM agent (Claude Code, OpenCode, Codex CLI, AmpCode, Cursor, etc.):
 
-```bash
-python -c "import tempfile,zipfile,urllib.request,shutil,pathlib;u='https://github.com/lingtongliao/skills-sync/archive/refs/heads/main.zip';t=pathlib.Path(tempfile.mkdtemp());z=t/'repo.zip';urllib.request.urlretrieve(u,z);zipfile.ZipFile(z).extractall(t);src=next(t.glob('skills-sync-*/skills/skills-update-manager'));dst=pathlib.Path.home()/'.skills'/'skills-update-manager';dst.parent.mkdir(parents=True,exist_ok=True);shutil.rmtree(dst,ignore_errors=True);shutil.copytree(src,dst);print(f'Installed: {dst}')"
+```text
+Install and configure skills-sync by following the instructions here:
+https://raw.githubusercontent.com/lingtongliao/skills-sync/refs/heads/main/docs/guide/installation.md
 ```
 
-After installation, use the CLI directly:
-
-```bash
-python ~/.skills/skills-update-manager/scripts/manage_skills.py check --repo lingtongliao/skills-sync --ref main
-```
+If you prefer manual installation, see `docs/guide/installation.md` for direct commands.
 
 ## Install for Local Development
 
