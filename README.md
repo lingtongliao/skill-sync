@@ -34,7 +34,7 @@ Copy and paste this prompt to your LLM agent (Claude Code, OpenCode, Codex CLI, 
 
 ```text
 Install and configure skills-sync by following the instructions here:
-https://raw.githubusercontent.com/lingtongliao/skills-sync/refs/heads/main/docs/guide/installation.md
+https://raw.githubusercontent.com/leoltking/skills-sync/refs/heads/main/docs/guide/installation.md
 ```
 
 If you prefer manual installation, see `docs/guide/installation.md` for direct commands.
