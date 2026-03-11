@@ -28,6 +28,20 @@ tests/
 - OpenCode workflows
 - Any custom toolchain using file-based skill directories
 
+## One-Click Install (Only `skills-update-manager`)
+
+Install only this skill directory into `~/.skills/skills-update-manager` with a single command:
+
+```bash
+python -c "import tempfile,zipfile,urllib.request,shutil,pathlib;u='https://github.com/lingtongliao/skills-sync/archive/refs/heads/main.zip';t=pathlib.Path(tempfile.mkdtemp());z=t/'repo.zip';urllib.request.urlretrieve(u,z);zipfile.ZipFile(z).extractall(t);src=next(t.glob('skills-sync-*/skills/skills-update-manager'));dst=pathlib.Path.home()/'.skills'/'skills-update-manager';dst.parent.mkdir(parents=True,exist_ok=True);shutil.rmtree(dst,ignore_errors=True);shutil.copytree(src,dst);print(f'Installed: {dst}')"
+```
+
+After installation, use the CLI directly:
+
+```bash
+python ~/.skills/skills-update-manager/scripts/manage_skills.py check --repo lingtongliao/skills-sync --ref main
+```
+
 ## Install for Local Development
 
 1. Clone repository.
